@@ -21,6 +21,12 @@ app = FastAPI(
     description="FastAPI + PostgreSQL (mobile) with JWT auth for mobile app",
 )
 
+app.mount(
+    "/storage",
+    StaticFiles(directory="storage"),
+    name="storage"
+)
+
 # CORS - required for Expo Web and mobile app to connect
 app.add_middleware(
     CORSMiddleware,
